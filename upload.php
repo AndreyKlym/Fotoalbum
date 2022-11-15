@@ -6,9 +6,9 @@
 require __DIR__ . '/auth.php';
 $login = getUserLogin();
 
-if($login !== null && !empty($_FILES['attachment'])){
-    
-}
+// if($login !== null && !empty($_FILES['attachment'])){
+
+// }
 
 if(!empty($_FILES['attachment'])){
     // var_dump($_FILES);
@@ -77,18 +77,25 @@ if(!empty($_FILES['attachment'])){
     <title>Загрузка файла</title>
 </head>
 <body>
-    <?php if(!empty($error)): ?>
-        <div style="color: red; font-weight: 700;"><?= $error ?>!!!</div>
-    <?php elseif(!empty($result)): ?>   
-        <p>
-            Файл <?= $srcFileName ?> успешно загружен на сайт и находиться по адресу: <br>
-            <?= $result ?>
-        </p>
-    <?php endif; ?>
+    <?php if($login === null) : ?>
+        <a href="/login.php">Авторизируйтесь</a>
+    <?php else : ?>
+        Добро пожаловать,  <?php $login; ?>
+        <a href="/logout.php">Выйти</a>
+        <br>
+        <?php if(!empty($error)): ?>
+            <div style="color: red; font-weight: 700;"><?= $error ?>!!!</div>
+        <?php elseif(!empty($result)): ?>   
+            <p>
+                Файл <?= $srcFileName ?> успешно загружен на сайт и находиться по адресу: <br>
+                <?= $result ?>
+            </p>
+        <?php endif; ?>
     <br>
-<form action="/upload.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="attachment">
-    <input type="submit">
-</form>
+    <form action="/upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="attachment">
+        <input type="submit">
+    </form>
+    <?php endif; ?>
 </body>
 </html>
