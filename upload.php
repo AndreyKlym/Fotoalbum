@@ -83,14 +83,15 @@ if(!empty($_FILES['attachment'])){
         Добро пожаловать,  <?php $login; ?>
         <a href="/logout.php">Выйти</a>
         <br>
-        <?php if(!empty($error)): ?>
-            <div style="color: red; font-weight: 700;"><?= $error ?>!!!</div>
-        <?php elseif(!empty($result)): ?>   
-            <p>
-                Файл <?= $srcFileName ?> успешно загружен на сайт и находиться по адресу: <br>
-                <?= $result ?>
-            </p>
-        <?php endif; ?>
+
+            <?php if(!empty($error)): ?>
+                <div style="color: red; font-weight: 700;"><?= $error ?>!!!</div>
+            <?php elseif(!empty($result)): ?>   
+                <p>
+                    Файл <?= $srcFileName ?> успешно загружен на сайт и находиться по адресу: <br>
+                    <?= $result ?>
+                </p>
+            <?php endif; ?>
     <br>
     <form action="/upload.php" method="post" enctype="multipart/form-data">
         <input type="file" name="attachment">
