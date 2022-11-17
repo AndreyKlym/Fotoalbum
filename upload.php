@@ -80,7 +80,7 @@ if(!empty($_FILES['attachment'])){
     <?php if($login === null) : ?>
         <a href="/login.php">Авторизируйтесь</a>
     <?php else : ?>
-        Добро пожаловать,  <?php $login; ?>
+        Добро пожаловать,  <?= $login; ?> | 
         <a href="/logout.php">Выйти</a>
         <br>
 
@@ -93,6 +93,8 @@ if(!empty($_FILES['attachment'])){
                 </p>
             <?php endif; ?>
     <br>
+    <a href="/index.php">Вернуться на главную страницу</a><br><br>
+    <h3>Выберите фото для загрузки</h3>
     <form action="/upload.php" method="post" enctype="multipart/form-data">
         <input type="file" name="attachment">
         <input type="submit">
