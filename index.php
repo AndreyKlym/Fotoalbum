@@ -40,6 +40,11 @@ $login = getUserLogin();
     </a>
     <!-- <br> -->
     <a href="/delete.php">Удалить фото</a>
+    <!-- <a href="unlink($link);">Удалить фото</a> -->
+    <?php 
+    // unlink($link);
+    // unlink('test.html');
+    ?>
     <?php endforeach; ?>
 
     

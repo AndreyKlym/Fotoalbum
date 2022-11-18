@@ -6,9 +6,6 @@
 require __DIR__ . '/auth.php';
 $login = getUserLogin();
 
-// if($login !== null && !empty($_FILES['attachment'])){
-
-// }
 
 if(!empty($_FILES['attachment'])){
     // var_dump($_FILES);
@@ -16,38 +13,32 @@ if(!empty($_FILES['attachment'])){
     var_dump($file);
     
     $srcFileName = $file['name'];
-    var_dump($srcFileName);
+    // var_dump($srcFileName);
     
     $newFilePath = __DIR__. '\\uploads\\' . $srcFileName;
-    var_dump($newFilePath);
-    var_dump($file['tmp_name']);
+    $oldFilePath = $file['tmp_name'];
+    // var_dump($newFilePath);
+    // var_dump($oldFilePath);
     
-    $allowedExtensions = ['jpg', 'png', 'gif', 'txt', 'sql'];
+    $allowedExtensions = ['jpg', 'png', 'gif', 'txt'];
     $extension = pathinfo($srcFileName, PATHINFO_EXTENSION);
     var_dump($extension);
 
     $fileSize = ($_FILES['attachment']['size']);
-    // $fileSize = ($file['size']);
-    // $fileSize = filesize($srcFileName);
-
-    echo 'Размер файла ' . $srcFileName . ': ' . $fileSize . ' байтов' . '<br>';
-    // echo 'Размер файла ' . $srcFileName . ': ' . filesize($srcFileName) . ' байтов' . '<br>';
+    $fileNotice = 'Размер файла ' . $srcFileName . ': ' . $fileSize . ' байтов' . '<br>';
 
     if($file['error'] === UPLOAD_ERR_OK){
         // list($width, $height, $type, $attr) = getimagesize($srcFileName);
         // list - присваивает переменным из списка значения из массива
         // или
-        $fileWeignt = getimagesize($srcFileName);
+        $fileWeignt = getimagesize($oldFilePath);
         $width = $fileWeignt[0];
         $height = $fileWeignt[1];
     }
 
-
     var_dump($width);
     var_dump($height);  
-    var_dump($fileWeignt);
-
-
+    // var_dump($fileWeignt);
 
     if($width >= 1280 && $height>= 720){
         $error = 'Размер изображения превышает допустимые высоту и ширину!';
@@ -68,6 +59,7 @@ if(!empty($_FILES['attachment'])){
     }else {
         $result = 'http://test/uploads/' . $srcFileName;
     }
+   
 }
 
 ?>
@@ -83,6 +75,7 @@ if(!empty($_FILES['attachment'])){
         Добро пожаловать,  <?= $login; ?> | 
         <a href="/logout.php">Выйти</a>
         <br>
+        <a href="/index.php">Вернуться на главную страницу</a><br><br>
 
             <?php if(!empty($error)): ?>
                 <div style="color: red; font-weight: 700;"><?= $error ?>!!!</div>
@@ -92,8 +85,8 @@ if(!empty($_FILES['attachment'])){
                     <?= $result ?>
                 </p>
             <?php endif; ?>
-    <br>
-    <a href="/index.php">Вернуться на главную страницу</a><br><br>
+            <?= $fileNotice; ?>
+    
     <h3>Выберите фото для загрузки</h3>
     <form action="/upload.php" method="post" enctype="multipart/form-data">
         <input type="file" name="attachment">

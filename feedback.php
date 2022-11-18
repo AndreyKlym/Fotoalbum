@@ -18,8 +18,8 @@ $email = $_POST['email'] ?? '';
 // }
 
 
-if(!empty($text) && !empty($email)){$login = getUserLogin();    // Получаем имя юзера
-    $datetime = date(D$login = getUserLogin();    // Получаем имя юзераATE_ATOM);
+if(!empty($text) && !empty($email)){
+    $datetime = date(DATE_ATOM);
     $login = getUserLogin();    // Получаем имя юзера
     $isWrote = file_put_contents(     // Пишет данные в файл
         __DIR__ . '/../private/feedback.txt', // Путь к записываемому файлу. 
