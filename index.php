@@ -44,7 +44,6 @@ $login = getUserLogin();
             // var_dump($link);
             // var_dump(basename($link));
             $fileToDeleteName =  basename($link);   // получить имя файла
-            echo basename('path/file.png'); // file.png
         ?>
         <a href="delete.php?name=<?= $fileToDeleteName ?>">Удалить фото</a>
     <?php endforeach; ?>
