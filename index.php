@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/auth.php';
+// require __DIR__ . '/delete.php';
 $login = getUserLogin();
 ?>
 
@@ -33,18 +34,19 @@ $login = getUserLogin();
 
     // var_dump($files);
     // var_dump($links);
+    
 
     foreach($links as $link) : ?>
-    <a href="<?= $link ?>">
-        <img src="<?= $link ?>" alt="" height="150px">
-    </a>
-    <!-- <br> -->
-    <a href="/delete.php">Удалить фото</a>
-    <!-- <a href="unlink($link);">Удалить фото</a> -->
-    <?php 
-    // unlink($link);
-    // unlink('test.html');
-    ?>
+        <a href="<?= $link ?>">    <!-- ссылка на фото -->
+            <img src="<?= $link ?>" alt="" height="150px">   <!-- само фото -->
+        </a>
+        <?php
+            // var_dump($link);
+            // var_dump(basename($link));
+            $fileToDeleteName =  basename($link);   // получить имя файла
+            echo basename('path/file.png'); // file.png
+        ?>
+        <a href="delete.php?name=<?= $fileToDeleteName ?>">Удалить фото</a>
     <?php endforeach; ?>
 
     
