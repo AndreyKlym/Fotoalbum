@@ -25,3 +25,5 @@ if(file_exists($fileToDelete)){
     echo "Файл $fileName не обнаружен  <br>";
 }
 
+?>
+<a href="/index.php">Вернуться на главную страницу</a><br>
