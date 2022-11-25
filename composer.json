@@ -1,0 +1,19 @@
+{
+    "name": "andron/test",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Andron\\Test\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andron Klym",
+            "email": "a3116280@gmail.com"
+        }
+    ],
+    "require": {
+        "erusev/parsedown": "^1.7"
+    }
+}

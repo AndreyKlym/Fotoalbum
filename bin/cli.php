@@ -1,6 +1,10 @@
 <?php
 
-use MyProject\Exceptions\CliException;
+require __DIR__ . '/../vendor/autoload.php';
+//echo $checkConect;
+
+//use MyProject\Exceptions\CliException;
+//use MyProject\Cli\AbstractCommand;
 
 // Этот файл можно назвать фронт-контроллером для консольных команд, он как index.php в случае с клиент-серверным подходом будет создавать другие объекты и запускать весь процесс
 
@@ -19,6 +23,16 @@ try{
     if (!class_exists($className)) {
         throw new \MyProject\Exceptions\CliException('Class "' . $className . '" not found');
     }
+
+
+    // проверкa на то, что класс, указанный в качестве аргумента, является наследником класса AbstractCommand
+    $checkClassAbstract = new  ReflectionClass($className);
+//        if(!$checkClassAbstract->isSubclassOf(AbstractCommand::class)){
+     if(!$checkClassAbstract->isSubclassOf(MyProject\Cli\AbstractCommand::class)){
+        throw new \MyProject\Exceptions\CliException('Class "' . $className . '" is not subclass of AbstractCommand');
+    }
+
+
 
     // Подготавливаем список аргументов
     $params = [];

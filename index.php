@@ -1,4 +1,10 @@
 <?php
+
+//require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
+// echo $checkConect;
+
+
 require __DIR__ . '/auth.php';
 // require __DIR__ . '/delete.php';
 $login = getUserLogin();

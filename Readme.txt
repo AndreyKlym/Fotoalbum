@@ -6,10 +6,6 @@ website login form
 ability to delete uploaded files
 
 
-Сделана на основе курса
-https://php.zone/kurs-php-dlya-nachinayushih/avtorizaciya-na-sayte-na-php
-https://php.zone/kurs-php-dlya-nachinayushih/kak-zagruzit-fayl-na-server-v-php
-
 
 *feedback.php file must be outside the project in a separate folder
 D:\OpenServer\domains\private\feedback.php 
